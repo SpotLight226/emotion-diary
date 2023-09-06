@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap");
+
+body {
+  background-color: #f6f6f6;
+  display: flex;
+  /* 가로축 가운데 */
+  justify-content: center;
+  /* 세로축 가운데 */
+  align-items: center;
+
+  font-family: "Nanum Pen Script";
+  /* 웹스크린의 실제 크기의 100%를 실제 크기로 */
+  min-height: 100vh;
+  margin: 0px;
+}
+
+/* 웹브라우저의 크기가 650px 이상일 때만 적용 => 반응형 앱 */
+@media (min-width: 650px) {
+  .App {
+    width: 640px;
+  }
+}
+
+/* 웹브라우저가 650px 이하일 때 */
+@media (max-width: 650px) {
+  /* App 컴포넌트가 화면의 90%를 차지하게 하겠다 */
+  .App {
+    width: 90vw;
+  }
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  /* 기본적으로 높이를 화면의 100% */
+  min-height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* My Button */
+
+.MyButton {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  font-size: 18px;
+
+  /* 버튼안의 글자가 잘려서 2줄이 되지 않게 */
+  white-space: nowrap;
+  font-family: "Nanum Pen Script";
+}
+
+.MyButton_default {
+  background-color: #ececec;
+  color: black;
+}
+
+.MyButton_positive {
+  background-color: #64c964;
+  color: white;
+}
+
+.MyButton_negative {
+  background-color: #fd565f;
+  color: white;
+}
+
+/* Header */
+
+header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+header > div {
+  display: flex;
+}
+
+header .head_text {
+  width: 50%;
+  font-size: 25px;
+  justify-content: center;
+}
+
+header .head_btn_left {
+  width: 25%;
+  justify-content: start;
+}
+
+header .head_btn_right {
+  width: 25%;
+  justify-content: end;
+}
+
+header button {
+  font-family: "Nanum Pen Script";
+}
+
+/* DiaryList */
+
+.DiaryList .menu_wrapper {
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  display: flex;
+  /* 각 div 간격을 벌려준다 */
+  justify-content: space-between;
+}
+
+.DiaryList .menu_wrapper .right_col {
+  /* right col 이 남은 모든 영역을 가지게 한다 */
+  flex-grow: 1;
+}
+
+.DiaryList .menu_wrapper .right_col button {
+  width: 100%;
+}
+
+.DiaryList .ControlMenu {
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ececec;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  cursor: pointer;
+  font-family: "Nanum Pen Script";
+  font-size: 18px;
+}
+
+/* DiaryItem */
+
+.DiaryItem {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid #e2e2e2;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 이미지를 감싸고 있는 div 설정 */
+.DiaryItem .emotion_img_wrapper {
+  cursor: pointer;
+  min-width: 120px;
+  height: 80px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 각 div 의 배경 색을 이미지와 동일하게 */
+.DiaryItem .emotion_img_wrapper_1 {
+  background-color: #64c964;
+}
+
+.DiaryItem .emotion_img_wrapper_2 {
+  background-color: #9dd772;
+}
+.DiaryItem .emotion_img_wrapper_3 {
+  background-color: #fdce17;
+}
+.DiaryItem .emotion_img_wrapper_4 {
+  background-color: #fd8446;
+}
+.DiaryItem .emotion_img_wrapper_5 {
+  background-color: #fd565f;
+}
+
+/* 이미지가 밖으로 나가지 않게 설정 */
+.DiaryItem .emotion_img_wrapper img {
+  width: 50%;
+}
+
+.DiaryItem .info_wrapper {
+  flex-grow: 1;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.DiaryItem .info_wrapper .diary_date {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.DiaryItem .info_wrapper .diary_content_preview {
+  font-size: 18px;
+}
+
+/* 화면이 작아져도 너무 작아지지 않게 */
+.DiaryItem .btn_wrapper {
+  min-width: 70px;
+}
