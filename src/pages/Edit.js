@@ -1,32 +1,42 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { DiaryStateContext } from "../App";
+import DiaryEditor from "../components/DiaryEditor";
 
 const Edit = () => {
-  const navigate = useNavigate();
-  // 비구조 할당으로 state 를 받는다
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [originData, setOriginData] = useState();
 
-  const id = searchParams.get("id");
-  console.log(id);
+  const navigate = useNavigate();
+
+  const { id } = useParams();
+
+  // 리스트를 받아옴
+  const diaryList = useContext(DiaryStateContext);
+
+  // 마운트될 때 데이터 가져옴
+  useEffect(() => {
+    // 일기 데이터가 1개 라도 있어야 작동
+    if (diaryList.length >= 1) {
+      // 숫자가 아닌 문자열일 수 도 있으므로 parse
+      const targetDiary = diaryList.find(
+        (it) => parseInt(it.id) === parseInt(id)
+      );
+
+      // undefined 일 때 false 로 판단된다
+      if (targetDiary) {
+        // 오리진 데이터로 set
+        setOriginData(targetDiary);
+      } else {
+        // 없는 일기라면 홈으로 보내버림
+        navigate("/", { replace: true });
+      }
+    }
+  }, [id, diaryList]);
 
   return (
     <div>
-      <h1>Edit</h1>
-      <p>수정페이지</p>
-
-      <button
-        onClick={() => {
-          navigate("/home");
-        }}
-      >
-        HOME으로 가기
-      </button>
-      <button
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        뒤로가기
-      </button>
+      {/* originData 가 있을 때, isEdit 과 originData 를 보낸다 */}
+      {originData && <DiaryEditor isEdit={true} originData={originData} />}
     </div>
   );
 };

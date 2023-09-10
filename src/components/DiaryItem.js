@@ -1,10 +1,8 @@
 import MyButton from "./MyButton";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const DiaryItem = ({ id, emotion, content, date }) => {
-  const env = process.env;
-  env.PUBLIC_URL = env.PUBLIC_URL || "";
-
   // ms 를 날짜로 변경
   const strDate = new Date(parseInt(date)).toLocaleDateString();
 
@@ -45,4 +43,4 @@ const DiaryItem = ({ id, emotion, content, date }) => {
   );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);
